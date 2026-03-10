@@ -6,13 +6,16 @@ API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-bot = Client("downloader", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+bot = Client("terabox_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 def get_video(link):
-    
+
     apis = [
         f"https://teraboxdownloader.nepcoderdevs.workers.dev/?url={link}",
-        f"https://terabox-api.vercel.app/api?url={link}"
+        f"https://terabox-api.vercel.app/api?url={link}",
+        f"https://api.teraboxdownloader.xyz/?url={link}",
+        f"https://terabox-dl-api.vercel.app/api?url={link}",
+        f"https://api.nepcoderdevs.workers.dev/terabox?url={link}"
     ]
 
     for api in apis:
@@ -21,13 +24,16 @@ def get_video(link):
             if r.status_code == 200:
                 data = r.json()
 
-                if "download" in data:
-                    return data["download"]
+                video = (
+                    data.get("download") or
+                    data.get("download_link") or
+                    data.get("video")
+                )
 
-                if "download_link" in data:
-                    return data["download_link"]
+                if video:
+                    return video
         except:
-            pass
+            continue
 
     return None
 
@@ -42,19 +48,19 @@ async def download(client, message):
 
     link = message.text.strip()
 
-    if "terabox" not in link and "1024tera" not in link and "diskwala" not in link:
-        await message.reply_text("❌ Send valid Terabox / DiskWala link")
+    if not any(x in link for x in ["terabox","1024tera","diskwala"]):
+        await message.reply_text("Send valid Terabox / DiskWala link")
         return
 
-    msg = await message.reply_text("🔎 Getting video link...")
+    msg = await message.reply_text("Fetching video...")
 
     video = get_video(link)
 
     if not video:
-        await msg.edit("❌ Could not fetch video. Try another link.")
+        await msg.edit("Link temporarily not working. Try another link.")
         return
 
-    await msg.edit("📤 Uploading video...")
+    await msg.edit("Uploading MP4...")
 
     await message.reply_video(video)
 
