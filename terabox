@@ -1,0 +1,11 @@
+multi-downloader-bot
+│
+├── main.py
+├── config.py
+├── handler.py
+├── terabox_extractor.py
+├── diskwala_extractor.py
+├── uploader.py
+├── utils.py
+├── requirements.txt
+└── Dockerfile
