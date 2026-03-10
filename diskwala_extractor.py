@@ -6,4 +6,10 @@ async def extract_diskwala(link):
 
     r = requests.get(api, params={"url": link})
 
-    return r.json()
+    data = r.json()
+
+    return {
+        "url": data["download_url"],
+        "name": data["file_name"],
+        "size": data["size"]
+    }
