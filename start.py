@@ -8,7 +8,7 @@ START_IMAGE = "https://i.ibb.co/WpKRVMKy/7168219724-28094.jpg"
 Start Message
 
 START_TEXT = """
-𝑾𝒆𝒍𝒄𝒐𝒎𝒆, {𝑨𝒏𝒖𝒋}.
+𝑾𝒆𝒍𝒄𝒐𝒎𝒆, {name}.
 
 🌟 𝑰 𝒂𝒎 𝒂 𝑻𝒆𝒓𝒂𝑩𝒐𝒙 𝒐𝒓 𝑫𝒊𝒔𝒌𝒘𝒂𝒍𝒂 𝑳𝒊𝒏𝒌 𝒕𝒐 𝑽𝒊𝒅𝒆𝒐 𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝒆𝒓 𝑩𝒐𝒕.
 
