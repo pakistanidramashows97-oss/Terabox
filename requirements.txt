@@ -1,0 +1,9 @@
+pyrogram
+tgcrypto
+aiohttp
+requests
+flask
+beautifulsoup4
+hachoir
+Pillow
+python-dotenv
