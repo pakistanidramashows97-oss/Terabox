@@ -7,3 +7,5 @@ beautifulsoup4
 hachoir
 Pillow
 python-dotenv
+aiofiles
+lxml
